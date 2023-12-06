@@ -135,9 +135,25 @@ class MongoId implements Serializable, TypeInterface, JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function serialize()
+    {
+        return (string) $this->objectID;
+    }
+
+    /**
      * @param string $serialized
      */
     public function __unserialize ($serialized)
+    {
+        $this->createObjectID($serialized);
+    }
+
+    /**
+     * @param string $serialized
+     */
+    public function unserialize ($serialized)
     {
         $this->createObjectID($serialized);
     }
