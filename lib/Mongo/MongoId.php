@@ -129,7 +129,7 @@ class MongoId implements Serializable, TypeInterface, JsonSerializable
     /**
      * @return string
      */
-    public function serialize()
+    public function __serialize()
     {
         return (string) $this->objectID;
     }
@@ -137,7 +137,7 @@ class MongoId implements Serializable, TypeInterface, JsonSerializable
     /**
      * @param string $serialized
      */
-    public function unserialize($serialized)
+    public function __unserialize ($serialized)
     {
         $this->createObjectID($serialized);
     }
